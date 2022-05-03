@@ -9,6 +9,7 @@ import urllib.parse
 import hashlib
 import hmac
 import json
+import numpy as np
 
 from .const import (
     _LOGGER,
@@ -126,6 +127,10 @@ class COINSPOTInfoSensor(Entity):
             else:
                 # Set the values of the sensor
                 _LOGGER.warning('status ok')
+                balances = r['balances']
+                totalBalance = sum((coin[0].audbalance for coin in balances), 0)
+                _LOGGER.warning("totalBalance = " + totalBalance)
+
                 self._last_update = datetime.today().strftime("%d-%m-%Y %H:%M")
                 self._totalBalanceInAud = 0
 
