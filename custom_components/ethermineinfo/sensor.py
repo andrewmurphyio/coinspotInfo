@@ -84,7 +84,7 @@ class COINSPOTInfoSensor(Entity):
 
     @property
     def extra_state_attributes(self):
-        return { totalBalanceInAUD: self._totalBalanceInAud }
+        return { 'totalBalanceInAUD': self._totalBalanceInAud }
 
     def _update(self):
         balances_url = (
