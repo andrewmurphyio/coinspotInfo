@@ -119,6 +119,7 @@ class COINSPOTInfoSensor(Entity):
                 raise ValueError()
             else:
                 # Set the values of the sensor
+                _LOGGER.warning('status ok')
                 self._last_update = datetime.today().strftime("%d-%m-%Y %H:%M")
                 self._totalBalanceInAud = r['workersOnline']
 
