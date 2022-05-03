@@ -128,7 +128,7 @@ class COINSPOTInfoSensor(Entity):
                 # Set the values of the sensor
                 _LOGGER.warning('status ok')
                 balances = r['balances']
-                _LOGGER.warning('values' + list(balances[0].values())[0]['audbalance'])
+                # _LOGGER.warning('values' + list(balances[0].values())[0]['audbalance'])
                 totalBalance = sum((list(coin.values())[0]['audbalance'] for coin in balances), 0)
                 _LOGGER.warning("totalBalance = " + totalBalance)
 
