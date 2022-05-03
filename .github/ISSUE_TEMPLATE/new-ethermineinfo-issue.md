@@ -1,6 +1,6 @@
 ---
-name: New 2minersInfo Issue
-about: Report issues with 2minersInfo with this form
+name: New coinspotInfo Issue
+about: Report issues with coinspotInfo with this form
 title: "[ISSUE]"
 labels: bug
 assignees: andrewmurphyio
@@ -24,7 +24,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Configuration**
-<!---Please post your 2minersInfo configuration here. REMEMBER TO SANITISE YOUR ADDRESS!-->
+<!---Please post your coinspotInfo configuration here. REMEMBER TO SANITISE YOUR ADDRESS!-->
 
 **Environment (please complete the following information):**
 <!--- Please paste the output from the System Info page in HomeAssistant--->

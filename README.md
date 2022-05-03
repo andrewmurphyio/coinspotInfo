@@ -1,8 +1,8 @@
-# 2miners
+# coinspot
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
 ## A custom component for [HomeAssistant](https://github.com/home-assistant/core) 
 
-Provides data from [eth.2miners.com](https://eth.2miners.com/) on a specified miner.
+Provides data from [coinspot.com](https://coinspot.com/) on a specified miner.
 
 If this has been of use, please consider funding my caffeine habit:
 
@@ -10,7 +10,7 @@ If this has been of use, please consider funding my caffeine habit:
 
 # Functionality
 
-* Create sensor items for 2miners items:
+* Create sensor items for coinspot items:
   * Current statistics
   
       ✔ Unpaid balance
@@ -41,15 +41,15 @@ If this has been of use, please consider funding my caffeine habit:
       
       ✔ Value in local currency
 
-## Things you should know about 2miners
-* The 2miners API has been subject to change - there may be occaisions where a code change is required before the component will work again.
-* There are limits on how many requests can be made to 2miners's API and therefore the data retrieved by 2minersInfo will be updated periodically and may be out of date by the time you look at it.
-* Please do not use 2minersInfo in isolation to make decisions about your cryptocurrency holdings.
-* 2minersInfo only reads the statistics of the provided miner.
+## Things you should know about coinspot
+* The coinspot API has been subject to change - there may be occaisions where a code change is required before the component will work again.
+* There are limits on how many requests can be made to coinspot's API and therefore the data retrieved by coinspotInfo will be updated periodically and may be out of date by the time you look at it.
+* Please do not use coinspotInfo in isolation to make decisions about your cryptocurrency holdings.
+* coinspotInfo only reads the statistics of the provided miner.
 
 ## Pre-requisite knowledge
 
-Before downloading and configuring 2minersInfo, please ensure you are familiar with the following items:
+Before downloading and configuring coinspotInfo, please ensure you are familiar with the following items:
 
 * HomeAssistant's configuration file [LINK](https://www.home-assistant.io/docs/configuration/)
 * YAML syntax [LINK](https://www.home-assistant.io/docs/configuration/yaml/)
@@ -60,30 +60,30 @@ Before downloading and configuring 2minersInfo, please ensure you are familiar w
 
 ## Installation
 
-Copy the files in the /custom_components/2minersInfo/ folder to: [homeassistant]/config/custom_components/2minersInfo/
+Copy the files in the /custom_components/coinspotInfo/ folder to: [homeassistant]/config/custom_components/coinspotInfo/
 
 HACS users, you know what to do!
 In case you don't:
 
 1. Open HACS from your HomeAssistant sidebar
 2. Press the "Explore & Add Repositories"
-3. Enter "2minersInfo" into the search box
-4. Press "2minersInfo"
+3. Enter "coinspotInfo" into the search box
+4. Press "coinspotInfo"
 5. Press "Install this repository in HACS"
 6. Don't forget to complete the configuration before restart HomeAssistant!
 
 ## Configuration
 
-To use 2minersInfo, please add the following items to your HomeAssistant ```configuration.yaml```
+To use coinspotInfo, please add the following items to your HomeAssistant ```configuration.yaml```
 ````
 sensor:
-  - platform: 2minersInfo
-    miner_address: (required) the address of your 2miners miner
+  - platform: coinspotInfo
+    miner_address: (required) the address of your coinspot miner
     currency_name: (required) the currency you would like your unpaid balance to be converted to 
     name_override: (optional) name to identify your wallet instead of your miner address.
 ````
 
-Please note that the 2miners API accepts the address in two formats:
+Please note that the coinspot API accepts the address in two formats:
 
 - 42 characters beginning with 0x
 - 40 characters with the 0x removed
@@ -94,21 +94,21 @@ Examples:
 
 ```
 sensor:
-  - platform: 2minersInfo
+  - platform: coinspotInfo
     miner_address: "0x1234567890123456789012345678901234567890"
     currency_name: USD
 ```
 
 ```
 sensor:
-  - platform: 2minersInfo
+  - platform: coinspotInfo
     miner_address: "1234567890123456789012345678901234567890"
     currency_name: USD
 ```
 
 ```
 sensor:
-  - platform: 2minersInfo
+  - platform: coinspotInfo
     miner_address: "1234567890123456789012345678901234567890"
     currency_name: USD
     name_override: "wallet name"
@@ -118,16 +118,16 @@ Multiple addresses can be configured.
 
 ## Templates
 
-You can create a template sensor for any of the attributes returned by 2minersInfo. For example:
+You can create a template sensor for any of the attributes returned by coinspotInfo. For example:
 
 Stale shares:
-```{{ states.sensor.2minersInfo_miner_address.attributes['stale_shares'] }}```
+```{{ states.sensor.coinspotInfo_miner_address.attributes['stale_shares'] }}```
 
 Current hashrate:
-```{{ states.sensor.2minersInfo_miner_address.attributes['current_hashrate'] }}```
+```{{ states.sensor.coinspotInfo_miner_address.attributes['current_hashrate'] }}```
 
 Unpaid amount:
-```{{ states.sensor.2minersInfo_miner_address.attributes['unpaid'] }}```
+```{{ states.sensor.coinspotInfo_miner_address.attributes['unpaid'] }}```
 
 ## How does it look?
 
@@ -139,7 +139,7 @@ Some rather pretty graphs are possible with the [mini-graph-card](https://github
 
 ## Discussion
 
-[Post issues with 2minersInfo here](https://github.com/ThomasPriorandrewmurphyio/2minersInfo/issues)
+[Post issues with coinspotInfo here](https://github.com/ThomasPriorandrewmurphyio/coinspotInfo/issues)
 
 Issues should be posted with logs and relevant, redacted excerpts from your configuration.yaml file to ensure that help can be given most effectively.
 
