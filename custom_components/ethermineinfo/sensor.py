@@ -109,12 +109,13 @@ class COINSPOTInfoSensor(Entity):
             'sign': sign,
         }
 
-        r = requests.post(balances_url, headers=headers, data=paybytes)
+        r = requests.post(balances_url, headers=headers, data=paybytes).json()
         print(r)
         self.data = r
         
         try:
             if len(r['status']) != 'ok':
+                _LOGGER.error(r['message'])
                 raise ValueError()
             else:
                 # Set the values of the sensor
