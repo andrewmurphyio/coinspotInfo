@@ -101,7 +101,7 @@ class COINSPOTInfoSensor(Entity):
         paybytes = urllib.parse.urlencode(payload).encode('utf8')
         _LOGGER.warning(paybytes)
 
-        sign = hmac.new(self.secret, paybytes, hashlib.sha512).hexdigest()
+        sign = hmac.new(bytes(self.secret, 'utf8'), paybytes, hashlib.sha512).hexdigest()
         _LOGGER.warning(sign)
 
         headers = {
