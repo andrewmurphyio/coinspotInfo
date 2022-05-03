@@ -41,7 +41,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     id_name = config.get(CONF_ID)
     key = config.get(CONF_KEY).strip()
-    secret = config.get(CONF_SECRET).strip().lower()
+    secret = config.get(CONF_SECRET).strip()
     update_frequency = timedelta(minutes=(int(config.get(CONF_UPDATE_FREQUENCY))))
 
     entities = []
