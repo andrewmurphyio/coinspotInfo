@@ -120,7 +120,7 @@ class COINSPOTInfoSensor(Entity):
         self.data = r
         
         try:
-            if len(r['status']) != 'ok':
+            if r['status'] != 'ok':
                 _LOGGER.error(r['status'])
                 raise ValueError()
             else:
