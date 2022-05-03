@@ -93,35 +93,35 @@ class COINSPOTInfoSensor(Entity):
                 + "/my/balances"
         )
 
-        _LOGGER.warning("Getting " + balances_url)
-        _LOGGER.warning("secret " + self.secret)
-        _LOGGER.warning("key " + self.key)
+        #_LOGGER.warning("Getting " + balances_url)
+        #LOGGER.warning("secret " + self.secret)
+        #_LOGGER.warning("key " + self.key)
 
         payload = {
             'nonce': int(time() * 1000),
         }
 
         paybytes = json.dumps(payload).replace(' ', '').encode('utf8')
-        _LOGGER.warning(paybytes)
+        #_LOGGER.warning(paybytes)
 
         sign = hmac.new(bytes(self.secret, 'utf8'), paybytes, hashlib.sha512).hexdigest()
-        _LOGGER.warning(sign)
+        #_LOGGER.warning(sign)
 
         headers = {
             'key': self.key,
             'sign': sign,
             'Content-Type': 'application/json',
         }
-        _LOGGER.warning(json.dumps(headers).encode('utf8'))
+        #_LOGGER.warning(json.dumps(headers).encode('utf8'))
 
 
         r = requests.post(balances_url, headers=headers, data=paybytes).json()
-        print(r)
+        #print(r)
         self.data = r
         
         try:
             if len(r['status']) != 'ok':
-                _LOGGER.error(r['message'])
+                _LOGGER.error(r['status'])
                 raise ValueError()
             else:
                 # Set the values of the sensor
