@@ -8,6 +8,7 @@ from time import time
 import urllib.parse
 import hashlib
 import hmac
+import json
 
 from .const import (
     _LOGGER,
@@ -98,7 +99,7 @@ class COINSPOTInfoSensor(Entity):
             'nonce': int(time() * 1000),
         }
 
-        paybytes = urllib.parse.urlencode(payload).encode('utf8')
+        paybytes = json.dumps(payload).encode('utf8')
         _LOGGER.warning(paybytes)
 
         sign = hmac.new(bytes(self.secret, 'utf8'), paybytes, hashlib.sha512).hexdigest()
