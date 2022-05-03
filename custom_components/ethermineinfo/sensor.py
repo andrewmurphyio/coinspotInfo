@@ -129,11 +129,11 @@ class COINSPOTInfoSensor(Entity):
                 _LOGGER.warning('status ok')
                 balances = r['balances']
                 # _LOGGER.warning('values' + list(balances[0].values())[0]['audbalance'])
-                totalBalance = sum((list(coin.values())[0]['audbalance'] for coin in balances), 0)
-                _LOGGER.warning("totalBalance = " + totalBalance)
+                totalAudBalance = sum((list(coin.values())[0]['audbalance'] for coin in balances), 0)
+                _LOGGER.warning("totalAudBalance = " + totalAudBalance)
 
                 self._last_update = datetime.today().strftime("%d-%m-%Y %H:%M")
-                self._totalBalanceInAud = 0
+                self._totalBalanceInAud = totalAudBalance
 
         except ValueError:
             self._totalBalanceInAud = 0
