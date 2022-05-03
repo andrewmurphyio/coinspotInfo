@@ -31,7 +31,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
         vol.Required(CONF_KEY): cv.string,
         vol.Required(CONF_SECRET): cv.string,
-        vol.Required(CONF_UPDATE_FREQUENCY, default=60): cv.string,
+        vol.Required(CONF_UPDATE_FREQUENCY, default=1): cv.string,
         vol.Optional(CONF_ID, default=""): cv.string,
     }
 )
@@ -67,7 +67,7 @@ class COINSPOTInfoSensor(Entity):
         self.data = None
         self.key = key
         self.secret = secret
-        self.update = Throttle(seconds=update_frequency)(self._update)
+        self.update = Throttle(update_frequency)(self._update)
         self._name = SENSOR_PREFIX + (id_name + " " if len(id_name) > 0 else "") + key
         self._icon = "mdi:diamond-outline"
         self._totalBalanceInAud = None
