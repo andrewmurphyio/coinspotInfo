@@ -108,6 +108,7 @@ class COINSPOTInfoSensor(Entity):
         headers = {
             'key': self.key,
             'sign': sign,
+            'Content-Type': 'application/json',
         }
 
         r = requests.post(balances_url, headers=headers, data=paybytes).json()
