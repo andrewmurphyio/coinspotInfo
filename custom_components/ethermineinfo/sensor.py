@@ -101,7 +101,7 @@ class COINSPOTInfoSensor(Entity):
             'nonce': int(time() * 1000),
         }
 
-        paybytes = json.dumps(payload).encode('utf8')
+        paybytes = json.dumps(payload).replace(' ', '').encode('utf8')
         _LOGGER.warning(paybytes)
 
         sign = hmac.new(bytes(self.secret, 'utf8'), paybytes, hashlib.sha512).hexdigest()
