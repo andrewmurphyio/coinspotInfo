@@ -94,6 +94,8 @@ class COINSPOTInfoSensor(Entity):
         )
 
         _LOGGER.warning("Getting " + balances_url)
+        _LOGGER.warning("secret " + self.secret)
+        _LOGGER.warning("key " + self.key)
 
         payload = {
             'nonce': int(time() * 1000),
@@ -110,6 +112,8 @@ class COINSPOTInfoSensor(Entity):
             'sign': sign,
             'Content-Type': 'application/json',
         }
+        _LOGGER.warning(json.dumps(headers).encode('utf8'))
+
 
         r = requests.post(balances_url, headers=headers, data=paybytes).json()
         print(r)
