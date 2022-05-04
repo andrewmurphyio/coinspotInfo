@@ -31,7 +31,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
         vol.Required(CONF_KEY): cv.string,
         vol.Required(CONF_SECRET): cv.string,
-        vol.Required(CONF_UPDATE_FREQUENCY, default=1): cv.string,
+        vol.Required(CONF_UPDATE_FREQUENCY, default=60): cv.string,
         vol.Optional(CONF_ID, default=""): cv.string,
     }
 )
